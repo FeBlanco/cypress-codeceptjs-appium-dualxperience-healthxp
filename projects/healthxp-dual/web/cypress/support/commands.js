@@ -23,19 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add("doLogin", (user) => {
-  cy.visit("http://localhost:3000");
+import users from "../fixtures/users.json";
+import login from "../support/pages/LoginPage";
+import dash from "../support/pages/DashPage";
 
-  if (user.email) {
-    cy.get("input[name=email]").type(user.email);
-  }
+Cypress.Commands.add("adminLogin", () => {
+  const user = users.admin;
 
-  if (user.password) {
-    cy.get("input[name=password]").type(user.password);
-  }
-  cy.contains("button", "Entrar").click();
-});
-
-Cypress.Commands.add("popUpHave", (text) => {
-  cy.get("#swal2-content").should("be.visible").should("have.text", text);
+  login.doLogin(user);
+  dash.userLoggedIn(user.name);
 });

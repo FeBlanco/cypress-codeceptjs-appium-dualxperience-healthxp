@@ -15,6 +15,7 @@
   "inv_emails": [
     { "email": "admin&healthxp.com", "password": "123456" },
     { "email": "www.healthxp.com", "password": "123456" },
+    { "email": "test@healthxp,com", "password": "123456" },
     { "email": "11415646546", "password": "123456" },
     { "email": "aajkhsajjkAHK", "password": "123456" },
     { "email": "aajkh1222345sajjkAHK", "password": "123456" },
