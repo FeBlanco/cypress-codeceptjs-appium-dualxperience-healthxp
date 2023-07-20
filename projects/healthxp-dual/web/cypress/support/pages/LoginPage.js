@@ -23,8 +23,12 @@ class LoginPage {
     this.submit();
   }
 
+  popUp() {
+    return cy.get("#swal2-content");
+  }
+
   popUpHave(text) {
-    cy.get("#swal2-content").should("be.visible").should("have.text", text);
+    this.popUp().should("be.visible").should("have.text", text);
   }
   popUpBack() {
     cy.get(".swal2-cancel").click();
