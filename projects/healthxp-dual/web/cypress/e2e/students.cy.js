@@ -1,5 +1,6 @@
 import students from "../fixtures/students.json";
-import dash from "../support/pages/DashPage";
+import studentPage from "../support/pages/StudentPage";
+
 describe("students", () => {
   it("deve poder cadastrar um  novo aluno", () => {
     const student = students.create;
@@ -8,14 +9,48 @@ describe("students", () => {
 
     cy.adminLogin();
 
-    cy.get('a[href="/students/new"]').click();
+    studentPage.goToRegister();
+    studentPage.submitForm(student);
+    studentPage.popup.haveText("Dados cadastrados com sucesso.");
+  });
 
-    cy.get("input[name=name").type(student.name);
-    cy.get("input[name=email").type(student.email);
-    cy.get("input[name=age").type(student.age);
-    cy.get("input[name=weight").type(student.weight);
-    cy.get("input[name=feet_tall").type(student.feet_tall);
+  it("não deve cadastrar com email duplicado", () => {
+    const student = students.duplicate;
 
-    cy.contains("button", "Cadastrar").click();
+    cy.task("resetStudent", student);
+
+    cy.adminLogin();
+
+    studentPage.goToRegister();
+    studentPage.submitForm(student);
+    studentPage.popup.haveText("O email informado já foi cadastrado!");
+  });
+
+  it("deve remover um aluno sem matricula", () => {
+    const student = students.remove;
+
+    cy.task("resetStudent", student);
+
+    cy.adminLogin();
+
+    studentPage.search(student.name);
+    studentPage.remove(student.email);
+
+    studentPage.popup.confirm();
+    studentPage.popup.haveText("Exclusão realizada com sucesso.");
+  });
+
+  it.only("todos os campos sào obrigatórios", () => {
+    const student = students.required;
+    cy.adminLogin();
+    studentPage.goToRegister();
+    studentPage.submitForm(student);
+
+    studentPage.requiredMessage("Nome completo", "Nome é obrigatório");
+    studentPage.requiredMessage("E-mail", "O email é obrigatório");
+    studentPage.requiredMessage("Idade", "A idade é obrigatória");
+    studentPage.requiredMessage("Peso (em kg)", "O peso é obrigatório");
+    studentPage.requiredMessage("Altura", "A altura é obrigatória");
   });
 });
+//
