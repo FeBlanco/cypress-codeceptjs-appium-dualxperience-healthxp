@@ -1,20 +1,20 @@
 import users from "../fixtures/users.json";
-import login from "../support/pages/LoginPage";
-import dash from "../support/pages/DashPage";
+import loginPage from "../support/pages/LoginPage";
+import studentPage from "../support/pages/StudentPage";
 
 describe("login", () => {
   it("deve logar com o perfil admin", () => {
     const user = users.admin;
 
-    login.doLogin(user);
-    dash.userLoggedIn(user.name);
+    loginPage.doLogin(user);
+    studentPage.navbar.userLoggedIn(user.name);
   });
 
   it("não deve logar com senha incorreta", () => {
     const user = users.inv_pass;
 
-    login.doLogin(user);
-    login.popUpHave(
+    loginPage.doLogin(user);
+    loginPage.popup.haveText(
       "Suas credenciais são inválidas, por favor tente novamente!"
     );
   });
@@ -22,8 +22,8 @@ describe("login", () => {
   it("não deve logar com email não cadastrado", () => {
     const user = users.email_not_found;
 
-    login.doLogin(user);
-    login.popUpHave(
+    loginPage.doLogin(user);
+    loginPage.popup.haveText(
       "Suas credenciais são inválidas, por favor tente novamente!"
     );
   });
@@ -34,21 +34,21 @@ describe("login", () => {
     let outputMessages = [];
     let expectedMessages = [];
 
-    login.go();
+    loginPage.go();
 
     emails.forEach((u) => {
-      login.fill(u);
-      login.submit();
+      loginPage.fill(u);
+      loginPage.submit();
 
-      login
-        .popUp()
+      loginPage.popup
+        .content()
         .invoke("text")
         .then((t) => {
           cy.log(t);
           outputMessages.push(t);
           expectedMessages.push("Insira um email válido.");
         });
-      login.popUpBack();
+      loginPage.popup.back();
     });
 
     cy.wrap(outputMessages).should("deep.equal", expectedMessages);
@@ -57,14 +57,14 @@ describe("login", () => {
   it("não deve logar com email em branco", () => {
     const user = users.empty_email;
 
-    login.doLogin(user);
-    login.popUpHave("Os campos email e senha são obrigatórios.");
+    loginPage.doLogin(user);
+    loginPage.popup.haveText("Os campos email e senha são obrigatórios.");
   });
 
   it("não deve logar com senha em branco", () => {
     const user = users.empty_pass;
 
-    login.doLogin(user);
-    login.popUpHave("Os campos email e senha são obrigatórios.");
+    loginPage.doLogin(user);
+    loginPage.popup.haveText("Os campos email e senha são obrigatórios.");
   });
 });

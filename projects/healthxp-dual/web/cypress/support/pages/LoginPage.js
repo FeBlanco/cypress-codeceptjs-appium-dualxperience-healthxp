@@ -1,4 +1,10 @@
+import popup from "./components/Popup";
+
 class LoginPage {
+  constructor() {
+    this.popup = popup;
+  }
+
   go() {
     cy.visit("http://localhost:3000");
   }
@@ -21,17 +27,6 @@ class LoginPage {
     this.go();
     this.fill(user);
     this.submit();
-  }
-
-  popUp() {
-    return cy.get("#swal2-content");
-  }
-
-  popUpHave(text) {
-    this.popUp().should("be.visible").should("have.text", text);
-  }
-  popUpBack() {
-    cy.get(".swal2-cancel").click();
   }
 }
 
