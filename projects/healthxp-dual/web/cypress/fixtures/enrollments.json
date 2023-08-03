@@ -1,8 +1,8 @@
 {
   "create": {
     "student": {
-      "name": "Fernando Papito",
-      "email": "fernando@yahoo.com",
+      "name": "Felipe Blanco",
+      "email": "Felipe@yahoo.com",
       "age": "28",
       "weight": "72",
       "feet_tall": "1.80"
