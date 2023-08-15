@@ -1,13 +1,13 @@
 import students from "../fixtures/students.json";
+
 import studentPage from "../support/pages/StudentPage";
 
-describe("students", () => {
-  it("deve poder cadastrar um  novo aluno", () => {
+describe("alunos", () => {
+  it("deve poder cadastar um novo aluno", () => {
     const student = students.create;
 
     // cy.task('deleteStudent', student.email)
     cy.deleteStudent(student.email);
-
     cy.adminLogin();
 
     studentPage.goToRegister();
@@ -38,13 +38,13 @@ describe("students", () => {
 
     studentPage.search(student.name);
     studentPage.remove(student.email);
-
     studentPage.popup.confirm();
     studentPage.popup.haveText("Exclusão realizada com sucesso.");
   });
 
-  it("todos os campos sào obrigatórios", () => {
+  it("todos os campos são obrigatórios", () => {
     const student = students.required;
+
     cy.adminLogin();
     studentPage.goToRegister();
     studentPage.submitForm(student);
@@ -75,7 +75,7 @@ describe("students", () => {
     studentPage.goToRegister();
     studentPage.submitForm(student);
 
-    studentPage.ralertMessage("Peso (em kg)", "Peso não permitido");
+    studentPage.alertMessage("Peso (em kg)", "Peso não permitido");
   });
 
   it.skip("Não deve cadastrar aluno com altura igual ou menor que 0", () => {
@@ -89,4 +89,3 @@ describe("students", () => {
     studentPage.alertMessage("Altura", "Altura não permitida");
   });
 });
-//

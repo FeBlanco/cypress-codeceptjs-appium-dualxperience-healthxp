@@ -19,7 +19,7 @@ class StudentPage {
       cy.get("input[name=weight").clear().type(student.weight);
     if (student.feet_tall)
       cy.get("input[name=feet_tall").clear().type(student.feet_tall);
-    cy.contains("button", "Cadastrar").click();
+    cy.contains("button", "Cadastrar").click({ force: true });
   }
 
   alertMessage(label, text) {
