@@ -16,7 +16,7 @@ class EnrollsPage {
 
     cy.get(`input[aria-label="select_${item}"]`).type(value);
 
-    cy.contains("div[id*=option]", value).click();
+    cy.contains("div[id*=option]", value).click({ force: true });
   }
 
   fillCard(student) {
