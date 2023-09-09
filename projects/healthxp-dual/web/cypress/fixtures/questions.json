@@ -1,5 +1,5 @@
 {
-  "create": {
+  "notification": {
     "student": {
       "name": "Lionel Messi",
       "email": "messi@gmail.com",
@@ -13,5 +13,21 @@
       "price": 99.99
     },
     "question": "qual a melhor marca de creatina?"
+  },
+  "prof_answer": {
+    "student": {
+      "name": "Cristiano Ronaldo",
+      "email": "cr7@gmail.com",
+      "age": "38",
+      "weight": "72",
+      "feet_tall": "1.88"
+    },
+    "plan": {
+      "id": 1,
+      "name": "Health",
+      "price": 99.99
+    },
+    "question": "como ganhar massa magra",
+    "answer": "Comer bastante proteina."
   }
 }
