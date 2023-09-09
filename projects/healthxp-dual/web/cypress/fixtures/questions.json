@@ -1,0 +1,17 @@
+{
+  "create": {
+    "student": {
+      "name": "Lionel Messi",
+      "email": "messi@gmail.com",
+      "age": "36",
+      "weight": "72",
+      "feet_tall": "1.70"
+    },
+    "plan": {
+      "id": 1,
+      "name": "Health",
+      "price": 99.99
+    },
+    "question": "qual a melhor marca de creatina?"
+  }
+}
