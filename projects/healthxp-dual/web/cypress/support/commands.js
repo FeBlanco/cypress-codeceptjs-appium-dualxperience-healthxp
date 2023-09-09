@@ -35,6 +35,18 @@ Cypress.Commands.add("adminLogin", () => {
   studentPage.navbar.userLoggedIn(user.name);
 });
 
+Cypress.Commands.add("createQuestion", (question) => {
+  cy.request({
+    url: `http://localhost:3333/students/${Cypress.env(
+      "studentId"
+    )}/help-orders`,
+    method: "POST",
+    body: { question },
+  }).then((response) => {
+    expect(response.status).to.eq(201);
+  });
+});
+
 Cypress.Commands.add("createEnroll", (dataTest) => {
   cy.request({
     url: Cypress.env("apiHelper") + "/enrolls",
@@ -56,6 +68,8 @@ Cypress.Commands.add("resetStudent", (student) => {
     body: student,
   }).then((response) => {
     expect(response.status).to.eq(201);
+    cy.log(response.body.student_id);
+    Cypress.env("studentId", response.body.student_id);
   });
 });
 
