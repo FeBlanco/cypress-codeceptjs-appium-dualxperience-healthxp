@@ -1,0 +1,30 @@
+{
+  "success_login": {
+    "student": {
+      "name": "Michael Jordan",
+      "email": "jordan23@gmail.com",
+      "age": "50",
+      "weight": "80",
+      "feet_tall": "1.96"
+    },
+    "plan": {
+      "id": 2,
+      "name": "Premium",
+      "price": 99.99
+    }
+  },
+  "not_login": {
+    "student": {
+      "name": "Kobe Bryant",
+      "email": "blackmanba@gmail.com",
+      "age": "42",
+      "weight": "80",
+      "feet_tall": "1.94"
+    },
+    "plan": {
+      "id": 1,
+      "name": "Health",
+      "price": 99.99
+    }
+  }
+}
