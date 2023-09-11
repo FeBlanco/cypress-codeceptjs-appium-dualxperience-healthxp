@@ -11,6 +11,7 @@ Este projeto foi criado com o intuito de aprender como criar arquiteturas de aut
 
 Nele automatizamos o sistema do Healthxp feito exclusivamente para o curso, sendo um sistema de gerenciamento de  alunos de uma academia.
 
+![home cy js](https://github.com/FeBlanco/cypress-basico-udemy/assets/43914674/a56a45a5-706c-4f44-9d9c-28b604ef898e)
 ![Healthxp_cypress](https://github.com/FeBlanco/cypress-codeceptjs-appium-dualxperience-healthxp/assets/43914674/6ea0174a-01be-43fc-bd62-e782532cb2e3)
 
 ### Instalação e Execução
