@@ -1,0 +1,17 @@
+{
+  "help": {
+    "student": {
+      "name": "Ronaldo Fenomeno",
+      "email": "r9@hotmail.com",
+      "age": "46",
+      "weight": "100",
+      "feet_tall": "1.82"
+    },
+    "plan": {
+      "id": 2,
+      "name": "Premium",
+      "price": 99.99
+    },
+    "question": "como faço para emagrecer?"
+  }
+}

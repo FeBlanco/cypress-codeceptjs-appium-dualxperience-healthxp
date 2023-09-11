@@ -84,5 +84,6 @@ module.exports = defineConfig({
     env: {
       apiHelper: process.env.API_HELPER,
     },
+    video: true,
   },
 });
